@@ -1,5 +1,4 @@
 This repository contains the subroutines for the CPHF evaluation of alchemical derivatives and alchemical forces.
 The code contained is made available to the public audience, free of charge under the MIT License.
 The code works using PySCF v. 1.7.6 - accessed February 2021( https://pyscf.org/ ), no support for later varsion is guaranteed.
-This can be consider a research code supplementary to the paper "Alchemical predictions of relaxed geometries throughout chemical space" by
-Giorgio Domenichini and O.Anatole von Lilienfeld.
+This can be consider a research code supplementary to the paper "Alchemical predictions of relaxed geometries throughout chemical space" by Giorgio Domenichini and O.Anatole von Lilienfeld.
