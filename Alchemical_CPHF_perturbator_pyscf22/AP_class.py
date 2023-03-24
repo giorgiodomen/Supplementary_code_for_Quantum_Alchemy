@@ -37,7 +37,11 @@ class APDFT_perturbator(lib.StreamObject):
         self.cubic_hessian=None
         self.hessian=None
         self.gradient=None
-    
+        self.xcf=None
+        try: 
+            self.xcf=mf.xc
+        except:pass
+        
     def U(self,atm_idx):
         if atm_idx not in self.sites:
                 self.sites.append(atm_idx)
@@ -191,9 +195,9 @@ class APDFT_perturbator(lib.StreamObject):
             raise 
         bsecorr=0
         for i in range(len(ral)):
-            bsecorr+=abse_atom(ral[i],tal[i],bs=self.mol.basis)
+            bsecorr+=abse_atom(ral[i],tal[i],self.mf.__class__,self.xcf, bs=self.mol.basis)
         return bsecorr
-
+    
 def parse_to_array(natm,dL):
     arr=np.zeros(natm)
     for i in range(len(dL[0])):
