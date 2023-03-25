@@ -147,9 +147,9 @@ class APDFT_perturbator(lib.StreamObject):
             self.cubic_hessian=cubic_alch_hessian(self.mf,dVs,mo1s,e1s)
             return self.cubic_hessian
     def build_all(self):
-        self.build_gradient(*self.sites)
-        self.build_hessian(*self.sites)
-        self.build_cubic_hessian(*self.sites)
+        self.build_gradient()
+        self.build_hessian()
+        self.build_cubic_hessian()
     def APDFT1(self,pvec):
         pvec=np.asarray(pvec)
         return self.mf.e_tot+pvec.dot(self.gradient)
