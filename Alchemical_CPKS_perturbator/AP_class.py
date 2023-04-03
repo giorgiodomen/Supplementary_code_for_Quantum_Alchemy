@@ -161,7 +161,9 @@ class APDFT_perturbator(lib.StreamObject):
     
     def target_energy_ref_bs(self,pvec):  # with refernce basis set 
         tmol=self.target_mol_ref_bs(pvec)
-        b2mf=scf.RHF(tmol)
+        b2mf=self.mf.__class__(tmol)
+        if self.xcf is not None:
+            b2mf.xc=self.xcf
         return b2mf.scf(dm0=b2mf.init_guess_by_1e())
     def target_mol_ref_bs(self,pvec):
         if type(pvec) is list:
@@ -182,7 +184,9 @@ class APDFT_perturbator(lib.StreamObject):
         return tmol
 
     def target_energy(self,pvec):
-        tmf=scf.RHF(self.target_mol(pvec))
+        tmf=self.mf.__class__(self.target_mol(pvec))
+        if self.xcf is not None:
+            tmf.xc=self.xcf
         return tmf.scf()
 
     
