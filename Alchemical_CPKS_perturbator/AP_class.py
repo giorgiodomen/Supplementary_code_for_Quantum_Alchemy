@@ -46,12 +46,14 @@ class APDFT_perturbator(lib.StreamObject):
                 self.sites.append(atm_idx)
                 self.perturb()
         return make_U(self.mo1s[atm_idx])
-    def dP(self,atm_idx):
+    def dP_atom(self,atm_idx):
         if atm_idx not in self.sites:
                 self.sites.append(atm_idx)
                 self.perturb()
         return make_dP(self.mf,self.mo1s[atm_idx])
-    
+    def dP_pred(self,pvec):
+        pvec=np.asarray(pvec)
+        return self.mf.make_rdm1()+np.array([self.dP_atom(i) for i in self.sites]).transpose(1,2,0).dot(pvec)
     def perturb(self):
         for site in self.sites:
             if site in self.mo1s: 
@@ -100,7 +102,7 @@ class APDFT_perturbator(lib.StreamObject):
                 self.perturb()
             DZ=[0 for x in range(self.mol.natm)]
             DZ[atm_idx]=1
-            af=aaff_resolv(self.mf,DZ,U=self.U(atm_idx),dP=self.dP(atm_idx),e1=self.e1(atm_idx))
+            af=aaff_resolv(self.mf,DZ,U=self.U(atm_idx),dP=self.dP_atom(atm_idx),e1=self.e1(atm_idx))
             af+=alc_deriv_grad_nuc(self.mol,DZ)
             self.afs[atm_idx]=af
         return self.afs[atm_idx]

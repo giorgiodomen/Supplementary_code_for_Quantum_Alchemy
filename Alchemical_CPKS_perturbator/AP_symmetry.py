@@ -1,6 +1,6 @@
 import numpy as np
 from scipy.spatial.transform import Rotation as R
-from pyscf.symm.basis import _ao_rotation_matrices as aorm
+from pyscf.symm.basis import _ao_rotation_matrices as aorm   ## To be updated for PySCF 2.2
 
 #symmetry operations on bezene
        
