@@ -52,7 +52,14 @@ class APDFT_perturbator(lib.StreamObject):
                 self.sites.append(atm_idx)
                 self.perturb()
         return make_dP(self.mf,self.mo1s[atm_idx])
-    
+    def dP_atom(self,atm_idx):
+        if atm_idx not in self.sites:
+                self.sites.append(atm_idx)
+                self.perturb()
+        return make_dP(self.mf,self.mo1s[atm_idx])
+    def dP_pred(self,pvec):
+        pvec=np.asarray(pvec)
+        return self.mf.make_rdm1()+np.array([self.dP_atom(i) for i in self.sites]).transpose(1,2,0).dot(pvec)    
     def perturb(self):
         for site in self.sites:
             if site in self.mo1s: 

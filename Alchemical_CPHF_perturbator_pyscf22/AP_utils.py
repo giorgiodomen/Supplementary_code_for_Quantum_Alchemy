@@ -1,4 +1,4 @@
-charge2symbol={1:"H",2:"He",3:"Li",4:"Be",5:"B",6:"C",7:"N",8:"O",9:"F",10:"Ne"}
+charge2symbol={1:"H",2:"He",3:"Li",4:"Be",5:"B",6:"C",7:"N",8:"O",9:"F",10:"Ne",11:"Na",12:"Mg",13:"Al",14:"Si"}
 
 def alias_param(param_name: str, param_alias: str):
     """
