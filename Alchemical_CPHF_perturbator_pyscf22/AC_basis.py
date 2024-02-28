@@ -32,7 +32,7 @@ coeffs_321=[np.array([g for ao in \
 cspl_321=MIS(zvals310,coeffs_321,k=5)
 def p321g(z):
     fb=gto.basis.load(bse.get_basis("3-21g",fmt="nwchem",elements=[int(z)]),_symbol(int(z)))
-    if z<=4 or z>=12:
+    if z<=3 or z>=11:
         return fb
     ci=0
     for i in range(len(fb)):
@@ -46,7 +46,7 @@ coeffs_631=[np.array([g for ao in \
 cspl_631=MIS(zvals310,coeffs_631,k=5)
 def p631g(z):
     fb=gto.basis.load(bse.get_basis("6-31g",fmt="nwchem",elements=[int(z)]),_symbol(int(z)))
-    if z<=3 or z>=12:
+    if z<=3 or z>=11:
         return fb
     ci=0
     for i in range(len(fb)):
@@ -65,7 +65,7 @@ cspl_svp=MIS(zvals510,coeffs_svp,k=5)
 def def2_svp(z):
     fb=gto.basis.load(bse.get_basis("def2-SVP",fmt="nwchem",elements=[int(np.round(z,decimals=0))]),\
                      _symbol(int(np.round(z,decimals=0))))
-    if z<=4 or z>=12:
+    if z<=4 or z>=11:
         return fb
     ci=0
     for i in range(len(fb)):
@@ -81,7 +81,7 @@ cspl_tzvp=MIS(zvals510,coeffs_tzvp,k=5)
 def def2_tzvp(z):
     fb=gto.basis.load(bse.get_basis("def2-TZVP",fmt="nwchem",elements=[int(np.round(z,decimals=0))]),\
                      _symbol(int(np.round(z,decimals=0))))
-    if z<=4 or z>=12:
+    if z<=4 or z>=11:
         return fb
     ci=0
     for i in range(len(fb)):
