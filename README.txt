@@ -6,5 +6,5 @@ For a better visualization using Jupyter notebooks and Pandas library the notebo
 
 The folder "Alchemical CPHF perturbator" contains the subroutines for the CPHF evaluation of alchemical derivatives and alchemical forces.
 The code content is made available to the public audience, free of charge under the MIT License.
-The code works using PySCF v. 1.7.6 - accessed February 2021 (https://pyscf.org/), no support for later varsion is guaranteed.
+The code works using PySCF v. 1.7.6 - accessed February 2021 (https://pyscf.org/), no support for later versions is guaranteed.
 This project can be considered a research code supplementary to the paper "Alchemical predictions of relaxed geometries throughout chemical space" by Giorgio Domenichini and O.Anatole von Lilienfeld.
