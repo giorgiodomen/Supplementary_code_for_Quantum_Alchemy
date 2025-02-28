@@ -6,6 +6,7 @@ from AP_utils import DeltaV
 NUC_FRAC_CHARGE=gto.mole.NUC_FRAC_CHARGE
 NUC_MOD_OF=gto.mole.NUC_MOD_OF
 PTR_FRAC_CHARGE=gto.mole.PTR_FRAC_CHARGE
+PTR_ZETA = gto.mole.PTR_ZETA
 
 
 def g1(mol0,dP,P,DZ,g0):    # dP/dz*dH/dx, P* d2H/dzdx 
@@ -15,6 +16,7 @@ def g1(mol0,dP,P,DZ,g0):    # dP/dz*dH/dx, P* d2H/dzdx
     datm=mol0._atm.copy()
     datm[:,NUC_MOD_OF] = NUC_FRAC_CHARGE
     for i in range(natm):
+        datm[i, PTR_FRAC_CHARGE] = datm[i, PTR_ZETA]
         denv[datm[i,PTR_FRAC_CHARGE]]=DZ[i]
     dH1=-gto.moleintor.getints('int1e_ipnuc_sph',datm,mol0._bas,denv, None,3,0,'s1')
     dH_dxdz=np.zeros((natm,3,nao,nao))
